@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fmc-font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+      "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    --fmc-color-white: white;
+    --fmc-color-black: black;
+    --fmc-color-gray-5: #fafbfc;
+    --fmc-color-gray-10: #f7f8fa;
+    --fmc-color-gray-20: #f0f2f5;
+    --fmc-color-gray-30: #dcdfe3;
+    --fmc-color-gray-40: #c3c5c9;
+    --fmc-color-gray-50: #a6a8ad;
+    --fmc-color-gray-60: #8b8d94;
+    --fmc-color-gray-70: #65666b;
+    --fmc-color-gray-80: #3a3b40;
+    --fmc-color-gray-90: #1f2024;
+    --fmc-color-gray-95: #15161a;
+    --fmc-color-gray-100: #0e0f12;
+    --fmc-color-gray-10A: rgba(176, 179, 181, 0.12);
+    --fmc-color-green-5: #edfaf2;
+    --fmc-color-green-10: #dff7ea;
+    --fmc-color-green-20: #ccf0dd;
+    --fmc-color-green-30: #a4e0c1;
+    --fmc-color-green-40: #74cf9d;
+    --fmc-color-green-50: #5abf86;
+    --fmc-color-green-60: #0bb25f;
+    --fmc-color-green-70: #009454;
+    --fmc-color-green-80: #037344;
+    --fmc-color-green-90: #005934;
+    --fmc-color-green-95: #004528;
+    --fmc-color-green-100: #033927;
+    --fmc-color-green-10A: rgba(11, 178, 95, 0.12);
+    --fmc-color-teal-5: #f0faf9;
+    --fmc-color-teal-10: #dff7f5;
+    --fmc-color-teal-20: #c7ede4;
+    --fmc-color-teal-30: #a4e0d5;
+    --fmc-color-teal-40: #79d1c4;
+    --fmc-color-teal-50: #56c2b7;
+    --fmc-color-teal-60: #00b5ac;
+    --fmc-color-teal-70: #009494;
+    --fmc-color-teal-80: #026e70;
+    --fmc-color-teal-90: #035859;
+    --fmc-color-teal-95: #014142;
+    --fmc-color-teal-100: #0c3433;
+    --fmc-color-teal-10A: rgba(0, 181, 172, 0.12);
+    --fmc-color-lightblue-5: #eff7fc;
+    --fmc-color-lightblue-10: #e3f6ff;
+    --fmc-color-lightblue-20: #caeafa;
+    --fmc-color-lightblue-30: #addcf7;
+    --fmc-color-lightblue-40: #87cdf6;
+    --fmc-color-lightblue-50: #68c3f7;
+    --fmc-color-lightblue-60: #2db6f8;
+    --fmc-color-lightblue-70: #0090e0;
+    --fmc-color-lightblue-80: #0571ad;
+    --fmc-color-lightblue-90: #005982;
+    --fmc-color-lightblue-95: #004666;
+    --fmc-color-lightblue-100: #003a54;
+    --fmc-color-lightblue-10A: rgba(45, 182, 248, 0.12);
+    --fmc-color-blue-5: #eff3fc;
+    --fmc-color-blue-10: #e1ecfc;
+    --fmc-color-blue-20: #d7e2f7;
+    --fmc-color-blue-30: #b6ccf1;
+    --fmc-color-blue-40: #8aaef2;
+    --fmc-color-blue-50: #618ee8;
+    --fmc-color-blue-60: #3b6de3;
+    --fmc-color-blue-70: #2652c9;
+    --fmc-color-blue-80: #2446ab;
+    --fmc-color-blue-90: #193791;
+    --fmc-color-blue-95: #0e2978;
+    --fmc-color-blue-100: #0e2469;
+    --fmc-color-blue-10A: rgba(59, 109, 227, 0.12);
+    --fmc-color-indigo-5: #f2f2fc;
+    --fmc-color-indigo-10: #eeedfc;
+    --fmc-color-indigo-20: #dcdcf6;
+    --fmc-color-indigo-30: #c6cbf1;
+    --fmc-color-indigo-40: #a2aaf2;
+    --fmc-color-indigo-50: #7582e5;
+    --fmc-color-indigo-60: #5c58e0;
+    --fmc-color-indigo-70: #5048bd;
+    --fmc-color-indigo-80: #3a36a8;
+    --fmc-color-indigo-90: #2c2996;
+    --fmc-color-indigo-95: #1d1a78;
+    --fmc-color-indigo-100: #1b1866;
+    --fmc-color-indigo-10A: rgba(99, 94, 224, 0.12);
+    --fmc-color-purple-5: #faf4fc;
+    --fmc-color-purple-10: #f5ebfa;
+    --fmc-color-purple-20: #e8def6;
+    --fmc-color-purple-30: #ddc7f2;
+    --fmc-color-purple-40: #c79ae5;
+    --fmc-color-purple-50: #ba78df;
+    --fmc-color-purple-60: #ae56d6;
+    --fmc-color-purple-70: #912ebf;
+    --fmc-color-purple-80: #791da3;
+    --fmc-color-purple-90: #610a8a;
+    --fmc-color-purple-95: #490569;
+    --fmc-color-purple-100: #37084d;
+    --fmc-color-purple-10A: rgba(174, 86, 214, 0.12);
+    --fmc-color-pink-5: #fcf4fa;
+    --fmc-color-pink-10: #fcebf6;
+    --fmc-color-pink-20: #fadcf0;
+    --fmc-color-pink-30: #f5c6e4;
+    --fmc-color-pink-40: #f7a8d7;
+    --fmc-color-pink-50: #f77ec0;
+    --fmc-color-pink-60: #f059a4;
+    --fmc-color-pink-70: #db3985;
+    --fmc-color-pink-80: #c4236e;
+    --fmc-color-pink-90: #9e0069;
+    --fmc-color-pink-95: #70004a;
+    --fmc-color-pink-100: #4d0033;
+    --fmc-color-pink-10A: rgba(240, 89, 164, 0.12);
+    --fmc-color-red-5: #fcf4f4;
+    --fmc-color-red-10: #fde7e9;
+    --fmc-color-red-20: #ffdbde;
+    --fmc-color-red-30: #ffbac1;
+    --fmc-color-red-40: #ff99a0;
+    --fmc-color-red-50: #f5626d;
+    --fmc-color-red-60: #ed394b;
+    --fmc-color-red-70: #cf1124;
+    --fmc-color-red-80: #b50719;
+    --fmc-color-red-90: #8f0007;
+    --fmc-color-red-95: #700000;
+    --fmc-color-red-100: #5c0505;
+    --fmc-color-red-10A: rgba(237, 57, 75, 0.12);
+    --fmc-color-orange-5: #fcf7f5;
+    --fmc-color-orange-10: #feeee7;
+    --fmc-color-orange-20: #ffe0d4;
+    --fmc-color-orange-30: #ffcfba;
+    --fmc-color-orange-40: #ffa985;
+    --fmc-color-orange-50: #fe8c5b;
+    --fmc-color-orange-60: #f96e3b;
+    --fmc-color-orange-70: #e84507;
+    --fmc-color-orange-80: #b83704;
+    --fmc-color-orange-90: #912b00;
+    --fmc-color-orange-95: #632208;
+    --fmc-color-orange-100: #4a1400;
+    --fmc-color-orange-10A: rgba(254, 238, 231, 0.12);
+    --fmc-color-yellow-5: #fcfbf2;
+    --fmc-color-yellow-10: #fcfae5;
+    --fmc-color-yellow-20: #fcf7cf;
+    --fmc-color-yellow-30: #fef39d;
+    --fmc-color-yellow-40: #f7ea88;
+    --fmc-color-yellow-50: #fae25e;
+    --fmc-color-yellow-60: #feda29;
+    --fmc-color-yellow-70: #f7ca00;
+    --fmc-color-yellow-80: #de9b00;
+    --fmc-color-yellow-90: #997500;
+    --fmc-color-yellow-95: #705600;
+    --fmc-color-yellow-100: #473300;
+    --fmc-color-yellow-10A: rgba(254, 218, 41, 0.12);
+    --fmc-color-primary-contents: #0bb25f;
+    --fmc-color-primary-container: #0bb25f;
+    --fmc-color-primary-container-contents: white;
+    --fmc-color-secondary-container: #dff7ea;
+    --fmc-color-secondary-container-contents: #0bb25f;
+    --fmc-color-neutral-primary-contents: #1f2024;
+    --fmc-color-neutral-primary-container: white;
+    --fmc-color-neutral-secondary-contents: #8b8d94;
+    --fmc-color-neutral-secondary-container: #f0f2f5;
+    --fmc-color-neutral-tertiary-contents: #c3c5c9;
+    --fmc-color-neutral-tertiary-container: #f7f8fa;
+    --fmc-color-inverse-container: #1f2024;
+    --fmc-color-inverse-container-contents: white;
+    --fmc-color-error-contents: #cf1124;
+    --fmc-color-error-container: #fde7e9;
+    --fmc-color-divider: #f0f2f5;
+    --fmc-color-outline: #dcdfe3;
+    --fmc-color-background: white;
+  }
+
+  html,
+  body {
+    /* Set the default text color */
+    color: var(--fmc-color-inverse-container);
+  }
+
+  #__next {
+    background-color: rgb(242, 242, 242);
+  }
+
+  #__next > div,
+  #__next > section {
+    max-width: 640px;
+    min-width: 320px;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .bottom-inset {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

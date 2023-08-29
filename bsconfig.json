@@ -1,0 +1,21 @@
+{
+  "name": "rescript-boilerplate",
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "sources": [
+    {
+      "dir": "src",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".mjs",
+  "bs-dependencies": ["@rescript/react"]
+}

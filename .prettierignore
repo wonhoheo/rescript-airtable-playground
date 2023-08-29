@@ -1,0 +1,10 @@
+node_modules
+.cache
+.next
+*.bs.js
+*.mjs
+public
+graphql_schema.json
+lib/bs
+src/libs/vendor
+pnpm-lock.yaml
