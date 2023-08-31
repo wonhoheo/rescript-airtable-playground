@@ -1,8 +1,8 @@
 const path = require("path");
 
 const buildEslintCommand = filenames => {
-  const files = filenames.map(f => path.relative(process.cwd(), f)).join(" --file ");
-  return `next lint --file ${files}`;
+  const files = filenames.map(f => path.relative(process.cwd(), f)).join(" ");
+  return `eslint ${files}`;
 };
 
 const buildPrettierCommand = filenames => {
@@ -12,10 +12,10 @@ const buildPrettierCommand = filenames => {
 
 const buildRescriptFormatCommand = filenames => {
   const files = filenames.map(f => path.relative(process.cwd(), f)).join(" ");
-  return `rescript format -stdin ${files}`;
+  return `rescript format ${files}`;
 };
 
 module.exports = {
-  "*.{js,jsx,ts,tsx,json,!mjs}": [buildEslintCommand, buildPrettierCommand],
+  "*.{js,jsx,!mjs}": [buildEslintCommand, buildPrettierCommand],
   "*.{res,resi}": [buildRescriptFormatCommand],
 };

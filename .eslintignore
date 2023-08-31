@@ -1,0 +1,12 @@
+.next
+node_modules
+
+.eslintignore
+.eslintrc.js
+.prettierrc.js
+.prettierignore
+next.config.js
+README.md
+postcss.config.js
+tailwind.config.js
+bsconfig.json

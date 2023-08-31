@@ -1,5 +1,5 @@
 {
-  "name": "rescript-boilerplate",
+  "name": "rescript-airtable-playground",
   "jsx": {
     "version": 4,
     "mode": "automatic"
@@ -17,5 +17,7 @@
     }
   ],
   "suffix": ".mjs",
-  "bs-dependencies": ["@rescript/react"]
+  "namespace": "false",
+  "bs-dependencies": ["@rescript/react", "@greenlabs/rescript-react-hook-form", "@glennsl/rescript-fetch"],
+  "bsc-flags": ["-open Belt"]
 }
