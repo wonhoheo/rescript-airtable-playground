@@ -1,6 +1,12 @@
 const bsconfig = require("./bsconfig.json");
 
-const transpileModules = ["rescript"].concat(bsconfig["bs-dependencies"]).concat([]);
+const transpileModules = ["rescript"]
+  .concat(bsconfig["bs-dependencies"])
+  .concat([
+    "@greenlabs/formula-design-token",
+    "@greenlabs/formula-components",
+    "@greenlabs/rescript-formula-components",
+  ]);
 
 const nextConfig = {
   pageExtensions: ["jsx", "js"],

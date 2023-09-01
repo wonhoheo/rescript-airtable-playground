@@ -18,6 +18,11 @@
   ],
   "suffix": ".mjs",
   "namespace": "false",
-  "bs-dependencies": ["@rescript/react", "@greenlabs/rescript-react-hook-form", "@glennsl/rescript-fetch"],
+  "bs-dependencies": [
+    "@rescript/react",
+    "@greenlabs/rescript-react-hook-form",
+    "@glennsl/rescript-fetch",
+    "@greenlabs/rescript-formula-components"
+  ],
   "bsc-flags": ["-open Belt"]
 }
