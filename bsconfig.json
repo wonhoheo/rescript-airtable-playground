@@ -22,7 +22,8 @@
     "@rescript/react",
     "@greenlabs/rescript-react-hook-form",
     "@glennsl/rescript-fetch",
-    "@greenlabs/rescript-formula-components"
+    "@greenlabs/rescript-formula-components",
+    "@ryyppy/rescript-promise"
   ],
   "bsc-flags": ["-open Belt"]
 }

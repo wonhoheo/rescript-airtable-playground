@@ -64,7 +64,7 @@ module API = {
     }
   }
 
-  let getCountries = async (~params) => {
+  let getCountries = async (~params: string) => {
     try {
       let response = await fetch(
         `${airtableBaseUrl}/${appId}/%F0%9F%8F%B3%EF%B8%8F%E2%80%8D%F0%9F%8C%88Countries?${params}`,
