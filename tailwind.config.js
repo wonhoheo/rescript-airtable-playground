@@ -131,10 +131,20 @@ module.exports = {
           "0%": { bottom: "-100%" },
           "100%": { bottom: 0 },
         },
+        fadeIn: {
+          "0%": { transform: "translateY(-8px)", opacity: 0 },
+          "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+        fadeOut: {
+          "0%": { transform: "translateY(0)", opacity: 1 },
+          "100%": { transform: "translateY(-8px)", opacity: 0 },
+        },
       },
       animation: {
         "slide-up": "slideUp 250ms",
         "sheet-up": "sheetUp 250ms",
+        fadeIn: "fadeIn 0.2s ease-in-out",
+        fadeOut: "fadeOut 0.2s ease-in-out",
       },
     },
   },
