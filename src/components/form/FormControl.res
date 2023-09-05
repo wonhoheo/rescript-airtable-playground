@@ -69,7 +69,9 @@ module SelectBox = {
           {icon->Option.getWithDefault(React.null)}
           <div className="grow shrink basis-0 h-6 justify-start items-center flex">
             <div
-              className="grow shrink basis-0 text-neutral-800 text-base font-normal leading-relaxed">
+              className={`grow shrink basis-0 ${values->Js.Array2.length > 0
+                  ? "text-neutral-800"
+                  : "text-[#C3C5C9]"} text-base font-normal leading-relaxed`}>
               {valueText}
             </div>
           </div>
@@ -84,7 +86,7 @@ module SelectBox = {
             ->Array.map(({text, value}) =>
               <li
                 key={value}
-                className="p-4  w-full bg-white rounded-lg flex justify-between cursor-pointer"
+                className="p-4  w-full bg-white rounded-lg flex justify-between cursor-pointer hover:bg-[#1f20240a] active:bg-[#1f202414]"
                 value={value}
                 onClick={_ => handleSelect(value)}>
                 {text->React.string}
