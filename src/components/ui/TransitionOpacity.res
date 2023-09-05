@@ -1,5 +1,5 @@
 @react.component
-let make = (~children, ~isVisible: bool, ~duration) => {
+let make = (~children, ~isVisible: bool, ~duration, ~className="") => {
   let (isShow, setIsShow) = React.useState(_ => isVisible)
 
   React.useEffect2(() => {
@@ -21,7 +21,8 @@ let make = (~children, ~isVisible: bool, ~duration) => {
     style={{
       animation: `${isVisible ? "fadeIn" : "fadeOut"} ${(duration + 100)
           ->Int.toString}ms ease-in-out`,
-    }}>
+    }}
+    className={className}>
     {switch isShow {
     | true => children
     | false => React.null

@@ -79,9 +79,9 @@ module SelectBox = {
             size=#sm className={`${arrowIconCss} ease-in-out duration-200`}
           />
         </div>
-        <TransitionOpacity isVisible={isOpen} duration={200}>
+        <TransitionOpacity isVisible={isOpen} duration={200} className="absolute w-full z-10">
           <ul
-            className="absolute w-full mt-2 h-56 overflow-auto bg-white rounded-2xl shadow border border-gray-100 flex-col justify-start items-start inline-flex z-10">
+            className="absolute w-full mt-2 h-56 overflow-auto bg-white rounded-2xl shadow border border-gray-100 flex-col justify-start items-start inline-flex ">
             {items
             ->Array.map(({text, value}) =>
               <li
