@@ -107,8 +107,8 @@ let default = () => {
     },
   )
 
-  // let formState = form->Form.formState
-  // let isValid = formState.isValid
+  let formState = form->Form.formState
+  let isValid = formState.isValid
 
   let handleCountry = (~field: FormInput.Country.field, ~value: string) => {
     let isValue = field.value->Array.getBy(country => country.value === value)
@@ -164,6 +164,7 @@ let default = () => {
           items={countriesData}
           titleText="Country"
           handleSelect={value => handleCountry(~value, ~field)}
+          errorMessage={form->FormInput.Country.error->Belt.Option.map(error => error.message)}
         />
       }, ())}
       {form->FormInput.Email.renderController(({field}) => {
@@ -175,7 +176,9 @@ let default = () => {
           hintText=?{form->FormInput.Email.error->Belt.Option.map(error => error.message)}
         />
       }, ())}
-      <Formula.Button.Container _type="submit" color=#primary size=#lg text="Register" />
+      <Formula.Button.Container
+        _type="submit" color=#primary size=#lg text="Register" disabled={!isValid}
+      />
     </form>
   </>
 }

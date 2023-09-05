@@ -13,6 +13,7 @@ module SelectBox = {
     ~items: array<selectBoxItem>,
     ~handleSelect,
     ~titleText,
+    ~errorMessage: option<string>,
   ) => {
     let (isOpen, setIsOpen) = React.useState(_ => false)
     let selectBoxRef = React.useRef(Js.Nullable.null)
@@ -100,6 +101,13 @@ module SelectBox = {
           </ul>
         </TransitionOpacity>
       </div>
+      {switch errorMessage {
+      | Some(message) =>
+        <span className="text-[15px] font-normal tracking-tight mt-2 block text-[#ec5990]">
+          {message->React.string}
+        </span>
+      | None => React.null
+      }}
     </div>
   }
 }
