@@ -36,7 +36,7 @@ module SelectBox = {
     } else if values->Js.Array2.length > 0 {
       values->Js.Array2.map(v => v.text)->Js.Array2.joinWith(", ")->React.string
     } else {
-      "선택해주세요"->React.string
+      "Please select"->React.string
     }
 
     React.useEffect0(() => {
@@ -81,7 +81,7 @@ module SelectBox = {
         </div>
         <TransitionOpacity isVisible={isOpen} duration={200}>
           <ul
-            className="absolute w-full mt-2 h-56 overflow-auto bg-white rounded-2xl shadow border border-gray-100 flex-col justify-start items-start inline-flex">
+            className="absolute w-full mt-2 h-56 overflow-auto bg-white rounded-2xl shadow border border-gray-100 flex-col justify-start items-start inline-flex z-10">
             {items
             ->Array.map(({text, value}) =>
               <li
