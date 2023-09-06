@@ -8,7 +8,8 @@ let useGetCountries = (~params: string) => {
 
   React.useEffect0(() => {
     let getApi = async () => {
-      await AirtableService.API.getCountries(
+      await AirtableService.API.getRecords(
+        ~url="%F0%9F%8F%B3%EF%B8%8F%E2%80%8D%F0%9F%8C%88Countries",
         ~params=`fields%5B%5D=Name&${params->Js.Global.encodeURI}`,
       )
     }

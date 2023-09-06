@@ -4,17 +4,18 @@ type owner = {
   name: string,
 }
 
+type selectBoxItem = FormControl.SelectBox.selectBoxItem
+
 type input = {
   packer: string,
   stage: string,
-  country: array<string>,
+  country: array<selectBoxItem>,
   email: string,
   contractPerson: string,
   phone: string,
   owner: array<owner>,
   packJunction: array<string>,
   ccEmail: string,
-  packerUrl: string,
   website: string,
   lostReason: string,
   testLabel: string,
@@ -24,7 +25,24 @@ type input = {
   leadSource: array<string>,
 }
 
-type selectBoxItem = FormControl.SelectBox.selectBoxItem
+type packerRequestBody = {
+  "Packer (no comma)": string,
+  "Stage": string,
+  "Country": array<string>,
+  "Email (1개만)": string,
+  "Contact Person": string,
+  "Phone": string,
+  "Owner": array<owner>,
+  "Pack.Test.Junction": array<string>,
+  "Website": string,
+  "Lost Reason": string,
+  "Test Label": string,
+  "1Sclass": array<string>,
+  "2Sclass": array<string>,
+  "CC email backup-TBD": string,
+  "🏷️ Product": array<string>,
+  "Lead Sources": array<string>,
+}
 
 type onChange<'a> = (ReactEvent.Form.t, 'a) => unit
 
@@ -95,7 +113,6 @@ let default = () => {
         owner: [],
         packJunction: [],
         ccEmail: "",
-        packerUrl: "",
         website: "",
         lostReason: "",
         testLabel: "",
@@ -122,8 +139,37 @@ let default = () => {
     field.onChange(result)
   }
 
-  let onSubmit = (input, _) => {
-    input->Js.log
+  let onSubmit = (input: input, _) => {
+    try {
+      let payload: 'whatever = {
+        "Packer (no comma)": input.packer,
+        "Stage": input.stage,
+        "Email (1개만)": input.email,
+        "Contact Person": input.contractPerson,
+        "Phone": input.phone,
+        "Owner": input.owner,
+        "Pack.Test.Junction": input.packJunction,
+        "CC email backup-TBD": input.ccEmail,
+        "Website": input.website,
+        "Lost Reason": input.lostReason,
+        "Test Label": input.testLabel,
+        "1Sclass": input.firstClass,
+        "2Sclass": input.secondClass,
+        "Lead Sources": input.leadSource,
+        "Country": input.country->Js.Array2.map(v => v.value),
+        "🏷️ Product": input.product,
+      }
+
+      let data = payload->AirtableUtils.convertToPayload
+
+      data->Js.log
+      data->Js.Json.stringifyAny->Js.log
+      let _ = AirtableService.API.createRecords(~url="%F0%9F%8F%AD%20Packer", ~data)
+    } catch {
+    | e => e->Js.log
+    }
+
+    ()
   }
 
   let onError = (error, _) => {
