@@ -141,26 +141,30 @@ let default = () => {
 
   let onSubmit = (input: input, _) => {
     try {
-      let payload: 'whatever = {
-        "Packer (no comma)": input.packer,
-        "Stage": input.stage,
-        "Email (1개만)": input.email,
-        "Contact Person": input.contractPerson,
-        "Phone": input.phone,
-        "Owner": input.owner,
-        "Pack.Test.Junction": input.packJunction,
-        "CC email backup-TBD": input.ccEmail,
-        "Website": input.website,
-        "Lost Reason": input.lostReason,
-        "Test Label": input.testLabel,
-        "1Sclass": input.firstClass,
-        "2Sclass": input.secondClass,
-        "Lead Sources": input.leadSource,
-        "Country": input.country->Js.Array2.map(v => v.value),
-        "🏷️ Product": input.product,
-      }
+      let payload = %raw(`
+          function(input) {
+            return {
+                "Packer (no comma)": input.packer,
+                "Stage": input.stage,
+                "Email (1개만)": input.email,
+                "Contact Person": input.contractPerson,
+                "Phone": input.phone,
+                "Owner": input.owner,
+                "Pack.Test.Junction": input.packJunction,
+                "CC email backup-TBD": input.ccEmail,
+                "Website": input.website,
+                "Lost Reason": input.lostReason,
+                "Test Label": input.testLabel,
+                "1Sclass": input.firstClass,
+                "2Sclass": input.secondClass,
+                "Lead Sources": input.leadSource,
+                "Country": input.country.map(v=> v.value),
+                "🏷️ Product": input.product,
+              }
+          }
+        `)
 
-      let data = payload->AirtableUtils.convertToPayload
+      let data = payload(input)->AirtableUtils.convertToPayload
 
       data->Js.log
       data->Js.Json.stringifyAny->Js.log
