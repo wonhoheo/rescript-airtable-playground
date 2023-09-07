@@ -44,6 +44,17 @@ type packerRequestBody = {
   "Lead Sources": array<string>,
 }
 
+type registerResponse =
+  | Success
+  | Error
+  | None
+
+type modalData = {
+  modalType: registerResponse,
+  title: string,
+  description: string,
+}
+
 type onChange<'a> = (ReactEvent.Form.t, 'a) => unit
 
 module Form = ReactHookForm.Make({
@@ -90,6 +101,13 @@ module FormInput = {
 
 @react.component
 let default = () => {
+  let (isVisible, setIsVisible) = React.useState(_ => false)
+  let (modalData, setModalData) = React.useState(_ => {
+    modalType: None,
+    title: "",
+    description: "",
+  })
+
   let result = CustomHooks.useGetCountries(~params="a")
 
   let makeSelectBoxItem: (~item: CustomHooks.countries) => FormControl.SelectBox.selectBoxItem = (
@@ -169,8 +187,22 @@ let default = () => {
       data->Js.log
       data->Js.Json.stringifyAny->Js.log
       let _ = AirtableService.API.createRecords(~url="%F0%9F%8F%AD%20Packer", ~data)
+      setIsVisible(_ => true)
+      setModalData(_ => {
+        modalType: Success,
+        title: "Register Success",
+        description: "Packer registration was successful.",
+      })
     } catch {
-    | e => e->Js.log
+    | e => {
+        setIsVisible(_ => true)
+        setModalData(_ => {
+          modalType: Error,
+          title: "Register Failed",
+          description: "Packer registration failed.",
+        })
+        e->Js.log
+      }
     }
 
     ()
@@ -178,6 +210,35 @@ let default = () => {
 
   let onError = (error, _) => {
     error->Js.log
+  }
+
+  let onHide = _ => {
+    setIsVisible(_ => false)
+
+    switch modalData.modalType {
+    | Success =>
+      form
+      ->Form.reset({
+        packer: "",
+        stage: "",
+        country: [],
+        email: "",
+        contractPerson: "",
+        phone: "",
+        owner: [],
+        packJunction: [],
+        ccEmail: "",
+        website: "",
+        lostReason: "",
+        testLabel: "",
+        firstClass: [],
+        secondClass: [],
+        product: [],
+        leadSource: [],
+      })
+      ->ignore
+    | _ => ()
+    }
   }
 
   <>
@@ -205,6 +266,7 @@ let default = () => {
           placeholder="Please enter your Stage"
           onChange={e => field.onChange(ReactEvent.Form.target(e)["value"])}
           state=?{form->FormInput.Stage.error->Option.map(_ => #error)}
+          value={field.value}
           hintText=?{form->FormInput.Stage.error->Belt.Option.map(error => error.message)}
         />
       }, ())}
@@ -223,11 +285,19 @@ let default = () => {
           state=?{form->FormInput.Email.error->Option.map(_ => #error)}
           onChange={e => field.onChange(ReactEvent.Form.target(e)["value"])}
           placeholder="Please enter your email"
+          value={field.value}
           hintText=?{form->FormInput.Email.error->Belt.Option.map(error => error.message)}
         />
       }, ())}
       <Formula.Button.Container
         _type="submit" color=#primary size=#lg text="Register" disabled={!isValid}
+      />
+      <Modal
+        show={isVisible}
+        cancelLabel="Close"
+        title={modalData.title}
+        description={modalData.description}
+        onHide={onHide}
       />
     </form>
   </>

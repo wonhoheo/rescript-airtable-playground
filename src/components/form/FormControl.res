@@ -63,7 +63,9 @@ module SelectBox = {
     })
     <div>
       <span className="text-base font-bold mb-2 block"> {titleText->React.string} </span>
-      <div className="relative" ref={ReactDOM.Ref.domRef(selectBoxRef)}>
+      <button
+        className="relative w-full focus:outline-none text-left"
+        ref={ReactDOM.Ref.domRef(selectBoxRef)}>
         <div
           className="w-full h-14 px-4 bg-white rounded-xl border border-zinc-200 flex items-center cursor-pointer"
           onClick={dropdownToggle}>
@@ -100,7 +102,7 @@ module SelectBox = {
             ->React.array}
           </ul>
         </TransitionOpacity>
-      </div>
+      </button>
       {switch errorMessage {
       | Some(message) =>
         <span className="text-[15px] font-normal tracking-tight mt-2 block text-[#ec5990]">
